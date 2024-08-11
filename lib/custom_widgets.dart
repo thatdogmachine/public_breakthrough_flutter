@@ -44,7 +44,7 @@ class CustomCheckboxListTile extends StatelessWidget {
 class CustomExpansionPanelList extends StatefulWidget {
   final String title;
   final TextAlign titleAlign;
-  final bool action;
+  final bool activity;
   final String checkbox;
   final bool isOpen;
   final Function(bool) onExpansionChanged;
@@ -56,7 +56,7 @@ class CustomExpansionPanelList extends StatefulWidget {
   const CustomExpansionPanelList({
     super.key,
     required this.title,
-    required this.action,
+    required this.activity,
     required this.checkbox,
     required this.isOpen,
     required this.onExpansionChanged,
@@ -89,7 +89,7 @@ class CustomExpansionPanelListState extends State<CustomExpansionPanelList> {
               title: CustomCheckboxListTile(
                 titleAlign: widget.titleAlign,
                 title: widget.title,
-                value: widget.action,
+                value: widget.activity,
                 onChanged: widget.onCheckboxChanged,
               ),
             );

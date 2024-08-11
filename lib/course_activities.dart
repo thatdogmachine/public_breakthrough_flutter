@@ -85,7 +85,7 @@ class CourseActivitiesPageState extends State<CourseActivitiesPage> {
                   titleAlign: TextAlign.center,
                   title:
                       'Activity $i:\n${mapCourseActivities.entries.elementAt(i).key}',
-                  action: activitiesCompleted[i],
+                  activity: activitiesCompleted[i],
                   checkbox: 'courseActivity$i',
                   isOpen: isOpen[i],
                   onExpansionChanged: (bool isExpanded) {
