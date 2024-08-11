@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_flutter_app/course_actions.dart';
+import 'package:my_flutter_app/course_activities.dart';
 import 'package:my_flutter_app/cv.dart';
 import 'package:my_flutter_app/variables.dart';
 import 'package:my_flutter_app/variables_constants.dart';

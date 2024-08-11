@@ -47,7 +47,7 @@ var courseActivitiesPageTitle = RichText(
             fontSize: defaultTitleFontSize),
       ),
       TextSpan(
-        text: 'course actions',
+        text: 'course activities',
         style: TextStyle(
             color: colorSchemeOnSurface,
             fontWeight: defaultTitleFontWeight,

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_flutter_app/functions.dart';
 import 'package:my_flutter_app/variables.dart';
-import 'package:my_flutter_app/variables_course_actions.dart';
+import 'package:my_flutter_app/variables_course_activities.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'custom_widgets.dart';
 
@@ -14,9 +14,9 @@ class CourseActivitiesPage extends StatefulWidget {
 
 class CourseActivitiesPageState extends State<CourseActivitiesPage> {
   List<bool> isOpen = List.empty(growable: true);
-  List<bool> actionsCompleted = List.empty(growable: true);
+  List<bool> activitiesCompleted = List.empty(growable: true);
   List<String> textOfCourseActivities =
-      List.empty(growable: true); // see also: variables_course_actions.dart
+      List.empty(growable: true); // see also: variables_course_activities.dart
 
   late ScrollController _scrollController;
 
@@ -27,7 +27,7 @@ class CourseActivitiesPageState extends State<CourseActivitiesPage> {
       // with // and explore what happens
       textOfCourseActivities =
           List<String>.filled(assetsCourseActivities.length, '');
-      actionsCompleted =
+      activitiesCompleted =
           List<bool>.filled(assetsCourseActivities.length, false);
       isOpen = List<bool>.filled(assetsCourseActivities.length, false);
     }
@@ -56,7 +56,7 @@ class CourseActivitiesPageState extends State<CourseActivitiesPage> {
     final prefs = await SharedPreferences.getInstance();
     setState(() {
       for (int i = 0; i < assetsCourseActivities.length; i++) {
-        actionsCompleted[i] = prefs.getBool('courseActivity$i') ?? false;
+        activitiesCompleted[i] = prefs.getBool('courseActivity$i') ?? false;
       }
     });
   }
@@ -85,7 +85,7 @@ class CourseActivitiesPageState extends State<CourseActivitiesPage> {
                   titleAlign: TextAlign.center,
                   title:
                       'Activity $i:\n${mapCourseActivities.entries.elementAt(i).key}',
-                  action: actionsCompleted[i],
+                  action: activitiesCompleted[i],
                   checkbox: 'courseActivity$i',
                   isOpen: isOpen[i],
                   onExpansionChanged: (bool isExpanded) {
@@ -98,9 +98,9 @@ class CourseActivitiesPageState extends State<CourseActivitiesPage> {
                   },
                   onCheckboxChanged: (bool? value) {
                     setState(() {
-                      actionsCompleted[i] = value ?? false;
+                      activitiesCompleted[i] = value ?? false;
                       _saveCheckboxState('courseActivity$i', value ?? false);
-                      switch (actionsCompleted[i]) {
+                      switch (activitiesCompleted[i]) {
                         case true:
                           isOpen[i] = false;
                           break;
