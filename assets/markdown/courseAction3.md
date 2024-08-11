@@ -19,3 +19,6 @@ in your terminal, then:
     flutter run -d chrome
 ```
 
+Remember to scroll down and copy/paste if you have difficulty reading / typing the commands.
+
+Once you have seen the counter app load in your browser, mark this action complete and move on to the next one.

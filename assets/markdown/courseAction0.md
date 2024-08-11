@@ -14,7 +14,9 @@ Some of these actions will contain commands you can / should type into a termina
 
 ## Basic terminology
 
-`terminal` - you might know this as a command prompt or cmd window or something similar
+`terminal` - you might know this as a command prompt or cmd window or something similar.
+
+`browser` - you may also see mention of `web browser`. For the purpose of this course it is assumed that you are using Google Chrome.
 
 ## Using the terminal with this course
 
