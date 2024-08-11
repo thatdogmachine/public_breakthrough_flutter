@@ -1,13 +1,13 @@
 List<String> assetsCourseActivities = [
   // TODO: this list could be refactored into
   // mapCourseActivities
-  'assets/markdown/courseAction0.md',
-  'assets/markdown/courseAction1.md',
-  'assets/markdown/courseAction2.md',
-  'assets/markdown/courseAction3.md',
-  'assets/markdown/courseAction4.md',
-  'assets/markdown/courseAction5.md',
-  'assets/markdown/courseAction6.md',
+  'assets/markdown/courseActivity0.md',
+  'assets/markdown/courseActivity1.md',
+  'assets/markdown/courseActivity2.md',
+  'assets/markdown/courseActivity3.md',
+  'assets/markdown/courseActivity4.md',
+  'assets/markdown/courseActivity5.md',
+  'assets/markdown/courseActivity6.md',
 ];
 // TODO: If we define this list here, it changes the behaviour
 // and on second pass we get a RangeError
