@@ -29,7 +29,7 @@ var myHomePageTitle = RichText(
   ),
 );
 
-var courseActionsPageTitle = RichText(
+var courseActivitiesPageTitle = RichText(
   text: const TextSpan(
     children: [
       TextSpan(

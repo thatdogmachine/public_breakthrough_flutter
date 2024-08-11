@@ -1,6 +1,6 @@
-List<String> assetsCourseActions = [
+List<String> assetsCourseActivities = [
   // TODO: this list could be refactored into
-  // mapCourseActions
+  // mapCourseActivities
   'assets/markdown/courseAction0.md',
   'assets/markdown/courseAction1.md',
   'assets/markdown/courseAction2.md',
@@ -11,9 +11,9 @@ List<String> assetsCourseActions = [
 ];
 // TODO: If we define this list here, it changes the behaviour
 // and on second pass we get a RangeError
-// List<String> textOfCourseActions = List.empty(growable: true);
+// List<String> textOfCourseActivities = List.empty(growable: true);
 
-Map<String, Map<String, List<String>>> mapCourseActions = {
+Map<String, Map<String, List<String>>> mapCourseActivities = {
   'Welcome to the course': {
     'buttonCopyContent': ['echo "hello from the terminal"'],
     'buttonCopyText': [

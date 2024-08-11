@@ -5,29 +5,31 @@ import 'package:my_flutter_app/variables_course_actions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'custom_widgets.dart';
 
-class CourseActionsPage extends StatefulWidget {
-  const CourseActionsPage({super.key});
+class CourseActivitiesPage extends StatefulWidget {
+  const CourseActivitiesPage({super.key});
 
   @override
-  CourseActionsPageState createState() => CourseActionsPageState();
+  CourseActivitiesPageState createState() => CourseActivitiesPageState();
 }
 
-class CourseActionsPageState extends State<CourseActionsPage> {
+class CourseActivitiesPageState extends State<CourseActivitiesPage> {
   List<bool> isOpen = List.empty(growable: true);
   List<bool> actionsCompleted = List.empty(growable: true);
-  List<String> textOfCourseActions =
+  List<String> textOfCourseActivities =
       List.empty(growable: true); // see also: variables_course_actions.dart
 
   late ScrollController _scrollController;
 
   @override
   void initState() {
-    if (textOfCourseActions.isEmpty) {
+    if (textOfCourseActivities.isEmpty) {
       // TODO: To understand these next 3 lines, make them a comment
       // with // and explore what happens
-      textOfCourseActions = List<String>.filled(assetsCourseActions.length, '');
-      actionsCompleted = List<bool>.filled(assetsCourseActions.length, false);
-      isOpen = List<bool>.filled(assetsCourseActions.length, false);
+      textOfCourseActivities =
+          List<String>.filled(assetsCourseActivities.length, '');
+      actionsCompleted =
+          List<bool>.filled(assetsCourseActivities.length, false);
+      isOpen = List<bool>.filled(assetsCourseActivities.length, false);
     }
     super.initState();
     _loadCheckboxStates();
@@ -36,14 +38,14 @@ class CourseActionsPageState extends State<CourseActionsPage> {
   }
 
   Future<void> _loadMarkdownData() async {
-    print('assetsCourseActions length: ${assetsCourseActions.length}');
-    for (int i = 0; i < assetsCourseActions.length; i++) {
+    print('assetsCourseActivities length: ${assetsCourseActivities.length}');
+    for (int i = 0; i < assetsCourseActivities.length; i++) {
       print(
-          'i is: $i and assetsCourseActions[$i] is: ${assetsCourseActions[i]}');
+          'i is: $i and assetsCourseActivities[$i] is: ${assetsCourseActivities[i]}');
       try {
-        var textCourseAction =
-            await readMarkdownFromAssets(assetsCourseActions[i].toString());
-        textOfCourseActions[i] = textCourseAction;
+        var textCourseActivity =
+            await readMarkdownFromAssets(assetsCourseActivities[i].toString());
+        textOfCourseActivities[i] = textCourseActivity;
       } catch (e) {
         print("Error reading file in readMarkdownFromAssets: $e");
       }
@@ -53,8 +55,8 @@ class CourseActionsPageState extends State<CourseActionsPage> {
   Future<void> _loadCheckboxStates() async {
     final prefs = await SharedPreferences.getInstance();
     setState(() {
-      for (int i = 0; i < assetsCourseActions.length; i++) {
-        actionsCompleted[i] = prefs.getBool('courseAction$i') ?? false;
+      for (int i = 0; i < assetsCourseActivities.length; i++) {
+        actionsCompleted[i] = prefs.getBool('courseActivity$i') ?? false;
       }
     });
   }
@@ -69,7 +71,7 @@ class CourseActionsPageState extends State<CourseActionsPage> {
     // _loadMarkdownData();
     return Scaffold(
       appBar: AppBar(
-        title: courseActionsPageTitle,
+        title: courseActivitiesPageTitle,
       ),
       body: Scrollbar(
         controller: _scrollController,
@@ -78,13 +80,13 @@ class CourseActionsPageState extends State<CourseActionsPage> {
           controller: _scrollController,
           child: Column(
             children: [
-              for (var i = 0; i < mapCourseActions.entries.length; i++)
+              for (var i = 0; i < mapCourseActivities.entries.length; i++)
                 CustomExpansionPanelList(
                   titleAlign: TextAlign.center,
                   title:
-                      'Action $i:\n${mapCourseActions.entries.elementAt(i).key}',
+                      'Activity $i:\n${mapCourseActivities.entries.elementAt(i).key}',
                   action: actionsCompleted[i],
-                  checkbox: 'courseAction$i',
+                  checkbox: 'courseActivity$i',
                   isOpen: isOpen[i],
                   onExpansionChanged: (bool isExpanded) {
                     setState(() {
@@ -97,7 +99,7 @@ class CourseActionsPageState extends State<CourseActionsPage> {
                   onCheckboxChanged: (bool? value) {
                     setState(() {
                       actionsCompleted[i] = value ?? false;
-                      _saveCheckboxState('courseAction$i', value ?? false);
+                      _saveCheckboxState('courseActivity$i', value ?? false);
                       switch (actionsCompleted[i]) {
                         case true:
                           isOpen[i] = false;
@@ -108,15 +110,15 @@ class CourseActionsPageState extends State<CourseActionsPage> {
                       }
                     });
                   },
-                  buttonCopyContentList: mapCourseActions.entries
+                  buttonCopyContentList: mapCourseActivities.entries
                           .elementAt(i)
                           .value['buttonCopyContent'] ??
                       [],
-                  buttonCopyTextList: mapCourseActions.entries
+                  buttonCopyTextList: mapCourseActivities.entries
                           .elementAt(i)
                           .value['buttonCopyText'] ??
                       [],
-                  markdownData: textOfCourseActions[i],
+                  markdownData: textOfCourseActivities[i],
                 )
             ],
           ),
