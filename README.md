@@ -2,6 +2,8 @@
 
 A new Flutter project for [Breakthrough](https://www.wearebreakthrough.co.uk) candidates
 
+There is a working demo of the outcome of this course at: https://ewann.github.io/breakthrough_demo/
+
 ## Steps used to create
 
     flutter create public_breakthrough_flutter --project-name my_flutter_app                                                                             3:35:39 
